@@ -1,5 +1,5 @@
 class Teacher < Person
-  def initialize (specialization, name="Unknown", age, parent_permission=true)
+  def initialize(specialization, age:, name: 'Unknown', parent_permission: true)
     super(name, age, parent_permission)
     @specialization = specialization
   end
@@ -7,5 +7,4 @@ class Teacher < Person
   def can_use_services?
     true
   end
-
 end
