@@ -9,7 +9,7 @@ p book = Book.new('Title', 'Author')
 p person = Person.new(25, 'John Doe')
 
 # Create a rental and associate it with the book and person
-p Rental.new(book, person)
+p Rental.new('2020-06-20', book, person)
 
 # Creating a person
 
@@ -34,8 +34,8 @@ classroom.add_student(student1)
 classroom.add_student(student2)
 
 # Creating rentals
-Rental.new(book1, student1)
-Rental.new(book2, student2)
+Rental.new('2020-06-20', book1, student1)
+Rental.new('2020-06-20', book2, student2)
 
 # Outputting classroom information
 puts "Classroom: #{classroom.label}"
