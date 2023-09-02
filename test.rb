@@ -14,8 +14,8 @@ require_relative 'book'
 # p ronny = Student.new(15, 'Ronny')
 
 # Create a book and a person
-p book = Book.new("Title", "Author")
-p person = Person.new(25, "John Doe")
+p book = Book.new('Title', 'Author')
+p person = Person.new(25, 'John Doe')
 
 # Create a rental and associate it with the book and person
-p rental = Rental.new(book, person)
+p Rental.new(book, person)
