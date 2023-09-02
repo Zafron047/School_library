@@ -9,7 +9,7 @@ class Student < Person
   end
 
   def classroom=(classroom)
-    @owner = owner
+    @classroom = classroom
     classroom.students.push(self) unless classroom.students.include?(self)
   end
 
