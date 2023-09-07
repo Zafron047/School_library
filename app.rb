@@ -169,4 +169,9 @@ class App
     puts 'List all rentals'
     view_book_by_renters(id)
   end
+
+  def exit_terminal
+    puts 'Exiting terminal....'
+  exit(0)
+end
 end

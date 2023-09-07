@@ -43,6 +43,7 @@ def main
     WelcomeMessage.display_menu
     option = OptionInput.user_input
     OptionInput.option_list(app, option)
+    # app.exit_terminal
   end
 end
 

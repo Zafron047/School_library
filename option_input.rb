@@ -21,9 +21,4 @@ module OptionInput
       puts 'Invalid input, please try again.'
     end
   end
-
-  def self.exit_terminal
-    puts 'Exiting terminal....'
-    exit(0)
-  end
 end
