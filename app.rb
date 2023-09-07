@@ -1,12 +1,14 @@
+require 'json'
 require_relative 'person'
 require_relative 'book'
 require_relative 'rental'
 require_relative 'teacher'
 require_relative 'students'
+require_relative 'people_saver'
 
 class App
   def initialize
-    @people = []
+    @people = PeopleSaver.load_people_from_json || []
     @books = []
     @rentals = []
   end
@@ -19,20 +21,28 @@ class App
   end
 
   def people_list
-    puts 'List of all people'
-    @people.each do |person|
-      puts person
+    if @people.empty?
+      puts 'No person registered'
+    else
+      puts 'List of all people'
+      @people.each do |person|
+        puts person
+      end
     end
-  end
+  end  
 
   def create_student(age, name, parent_permission)
     student = Student.new(age, name, parent_permission)
     @people << student
+
+    PeopleSaver.save_people_to_json(@people)
   end
 
   def create_teacher(age, name, specialization)
     teacher = Teacher.new(age, name, specialization)
     @people << teacher
+
+    PeopleSaver.save_people_to_json(@people)
   end
 
   def create_book(title, author)
@@ -95,7 +105,7 @@ class App
     when 1
       create_student_with_one
     when 2
-      create_teacher_with_three
+      create_teacher_with_two
     else
       puts 'Invalid input'
     end
@@ -114,7 +124,7 @@ class App
     puts 'Student created successfully'
   end
 
-  def create_teacher_with_three
+  def create_teacher_with_two
     puts 'Generating Teacher...'
     print 'Teacher Age:'
     age = gets.chomp.to_i
