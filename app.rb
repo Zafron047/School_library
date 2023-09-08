@@ -5,18 +5,19 @@ require_relative 'rental'
 require_relative 'teacher'
 require_relative 'students'
 require_relative 'people_saver'
+require_relative 'book_saver'
 
 class App
   def initialize
     @people = PeopleSaver.load_people_from_json || []
-    @books = []
+    @books = BookSaver.load_books_from_json || []
     @rentals = []
   end
 
   def book_list
     puts 'List of all books'
     @books.each do |book|
-      puts "Title: \"#{book.title}\" , Author: #{book.author}"
+      puts "Title: #{book.title}, Author: #{book.author}"
     end
   end
 
@@ -48,6 +49,8 @@ class App
   def create_book(title, author)
     book = Book.new(title, author)
     @books << book
+
+    BookSaver.save_books_to_json(@books)
   end
 
   def create_rental(date, book, person)
