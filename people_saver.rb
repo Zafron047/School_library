@@ -5,7 +5,7 @@ module PeopleSaver
     json_data = people.map do |person|
       if person.is_a?(Student)
           {
-            'type' => 'student',
+            'type' => 'Student',
             'age' => person.age,
             'name' => person.name,
             'parent_permission' => person.parent_permission
@@ -30,9 +30,9 @@ module PeopleSaver
     if File.exist?(file_path)
       json_data = File.read(file_path)
       JSON.parse(json_data).map do |person_data|
-        if person_data['type'] == 'student'
+        if person_data['type'] == 'Student'
           Student.new(person_data['age'], person_data['name'], person_data['parent_permission'])
-        elsif person_data['type'] == 'teacher'
+        elsif person_data['type'] == 'Teacher'
           Teacher.new(person_data['age'], person_data['name'], person_data['specialization'])
         end
       end
